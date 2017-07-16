@@ -2,6 +2,9 @@ kiosk:
   namespace: "io.tchepannou"
 
 spring:
+  jpa:
+    hibernate:
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   datasource:
     poolName: K.Geo.CP
     driverClass: com.mysql.jdbc.Driver

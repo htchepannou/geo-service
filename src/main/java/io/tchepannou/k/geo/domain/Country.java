@@ -1,5 +1,6 @@
 package io.tchepannou.k.geo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,6 +15,8 @@ public class Country {
     private String name;
     private Integer area;
     private Integer population;
+
+    @Column(name="currency_code")
     private String currencyCode;
 
     private String languages;
