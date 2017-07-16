@@ -40,11 +40,10 @@ endpoints:
 logging:
   level:
     root: INFO
-    io.tchepannou: INFO
     com.amazonaws: ERROR
-    org: ERROR
-    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: FATAL
-    io: WARN
+    org.springframework: ERROR
+    org.hibernate: ERROR
+    org.hibernate.SQL: DEBUG
     springfox: ERROR
 
   pattern:

@@ -225,6 +225,7 @@
                 <configuration>
                     <includes>
                         <include>**/*/HealthTest.java</include>
+                        <include>**/*/FeatureControllerTest.java</include>
                     </includes>
                 </configuration>
             </plugin>
