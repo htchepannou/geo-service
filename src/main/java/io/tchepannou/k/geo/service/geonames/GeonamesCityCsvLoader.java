@@ -55,14 +55,14 @@ public class GeonamesCityCsvLoader extends CsvLoader {
 
         final Long geonamesId = toLong(cells[GEONAMES_ID_COLUMN]);
         if (geonamesId == null){
-            warn(row, "geonamesid=null", null);
+            logError(row, "geonamesid=null", null);
             return false;
         }
 
         final String iso = cells[COUNTRY_ISO];
         final Country country = countryDao.findByIsoIgnoreCase(iso);
         if (country == null){
-            warn(row, "Country[" + iso + "] not found", null);
+            logError(row, "Country[" + iso + "] not found", null);
             return false;
         }
 

@@ -11,7 +11,7 @@ services:
 install: true
 
 script:
-  - mvn install
+  - mvn -q install --settings settings.xml
 
 notifications:
   email:

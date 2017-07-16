@@ -31,7 +31,7 @@ public class GeonamesCountryCsvLoader extends CsvLoader {
 
         final Long geonamesId = toLong(cells[GEONAMES_ID_COLUMN]);
         if (geonamesId == null){
-            warn(row, "geonamesid=null", null);
+            logError(row, "geonamesid=null", null);
             return false;
         }
 

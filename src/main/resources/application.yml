@@ -46,7 +46,8 @@ logging:
     com.amazonaws: ERROR
     org.springframework: ERROR
     org.hibernate: ERROR
-    org.hibernate.SQL: DEBUG
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: OFF
+    #org.hibernate.SQL: DEBUG
     springfox: ERROR
 
   pattern:

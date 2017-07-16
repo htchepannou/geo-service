@@ -40,7 +40,7 @@ public abstract class CsvLoader implements Loader {
                         count++;
                     }
                 } catch (Exception e) {
-                    warn(row, "Unexpected error", e);
+                    logError(row, "Unexpected error", e);
                 }
             }
         }
@@ -80,12 +80,12 @@ public abstract class CsvLoader implements Loader {
         }
     }
 
-    protected void warn (int row, String message, Throwable ex){
+    protected void logError(int row, String message, Throwable ex){
         final String msg = "row=" + row + ", Message=" + message;
         if (ex == null) {
-            getLogger().warn(msg);
+            getLogger().error(msg);
         } else {
-            getLogger().warn(msg, ex);
+            getLogger().error(msg, ex);
         }
     }
 }
