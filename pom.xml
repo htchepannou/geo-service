@@ -173,7 +173,7 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <url>jdbc:mysql://localhost:3306</url>
+                            <url>jdbc:mysql://127.0.0.1:3306</url>
                             <driver>com.mysql.jdbc.Driver</driver>
                             <username>root</username>
                             <sqlCommand>
@@ -189,7 +189,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>3.2.1</version>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/k_geo</url>
+                    <url>jdbc:mysql://127.0.0.1:3306/k_geo</url>
                     <user>root</user>
                 </configuration>
                 <dependencies>

@@ -8,13 +8,10 @@ jdk: oraclejdk8
 services:
   - mysql
 
-before_script:
-  - mysql -e 'DROP DATABASE IF EXISTS k_geo; CREATE DATABASE k_geo;' -uroot
-
 install: true
 
 script:
-  - mvn clean compile flyway:clean flyway:migrate install
+  - mvn install
 
 notifications:
   email:
