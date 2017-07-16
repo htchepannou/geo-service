@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table( name = "T_CITY")
+@Table( name = "t_city")
 public class City {
     @Id
     private Long id;
