@@ -1,0 +1,52 @@
+kiosk:
+  namespace: "io.tchepannou"
+
+spring:
+  datasource:
+    poolName: K.Geo.CP
+    driverClass: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/k_geo
+    username: root
+    #password:
+
+k:
+  geonames:
+    baseUrl: http://download.geonames.org/export/dump
+    countries:
+      - "CM"
+
+swagger:
+  version: "1.0"
+  title: Geography API
+  description: Geography API
+  termsPath: ""
+  email: "herve.tchepannou@gmail.com"
+  licenceType: ""
+  licencePath: "#"
+
+server:
+  port: 8081
+
+endpoints:
+  enabled: true
+  sensitive: true
+  health:
+    sensitive: false
+  info:
+    sensitive: false
+  metrics:
+    sensitive: false
+
+logging:
+  level:
+    root: INFO
+    io.tchepannou: INFO
+    com.amazonaws: ERROR
+    org: ERROR
+    org.hibernate.engine.jdbc.spi.SqlExceptionHelper: FATAL
+    io: WARN
+    springfox: ERROR
+
+  pattern:
+    console: "%d Type=%level Logger=%c Thread=%thread %m%n"
+    file: "%d Type=%level Logger=%c Thread=%thread %m%n"
