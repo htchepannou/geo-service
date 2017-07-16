@@ -20,7 +20,7 @@ before_script:
 install: true
 
 script:
-  - mvn clean install
+  - mvn clean compile flyway:clean flyway:migrate install
 
 notifications:
   email:
