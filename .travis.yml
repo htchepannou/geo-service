@@ -14,7 +14,7 @@ before_script:
   - mysql -e 'CREATE DATABASE k_geo;'
 
 script:
-  - mvn -q flyway:clean flyway:migrate install --settings settings.xml
+  - mvn -q compile flyway:clean flyway:migrate install --settings settings.xml
 
 notifications:
   email:
