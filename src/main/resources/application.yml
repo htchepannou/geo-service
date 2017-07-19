@@ -1,6 +1,3 @@
-kiosk:
-  namespace: "io.tchepannou"
-
 spring:
   jpa:
     hibernate:
