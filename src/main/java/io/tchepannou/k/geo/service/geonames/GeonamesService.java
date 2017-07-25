@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -87,7 +88,13 @@ public class GeonamesService {
         }
     }
 
-    public int loadCities(final String country) throws IOException{
+    @Async
+    public void loadCitiesAsync (final String country) throws IOException {
+        loadCities(country);
+    }
+
+    //-- Private
+    private int loadCities(final String country) throws IOException{
         final String job = LOCK_CITY + "-" + country;
         Lock lock = lock(job);
         if (lock == null){
@@ -132,7 +139,6 @@ public class GeonamesService {
         return rows;
     }
 
-    //-- Private
     private Lock lock(String name){
         String owner;
         try {
