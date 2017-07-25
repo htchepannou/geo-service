@@ -4,6 +4,3 @@ spring:
     url: mysql://erxv1bzckceve5lh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/plzw18bdix8cffxv
     username: k27qxv2s50f1mliv
     password: lb6q7c0ajxt20s6v
-
-server:
-  port: 8080
