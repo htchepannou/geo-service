@@ -23,6 +23,7 @@
         <k-geo-client.version>1.0.0</k-geo-client.version>
 
         <commons-io.version>2.4</commons-io.version>
+        <flyway.version>4.2.0</flyway.version>
         <httpclient.version>4.5.1</httpclient.version>
         <mysql.version>5.1.34</mysql.version>
         <opencsv.version>2.3</opencsv.version>
@@ -42,6 +43,18 @@
             <version>${k-geo-client.version}</version>
         </dependency>
 
+
+        <!-- ==== DATABASE ===== -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
 
 
         <!-- ==== SPRING ==== -->
@@ -71,11 +84,6 @@
         </dependency>
 
         <!-- === MISC === -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
         <dependency>
             <groupId>net.sf.opencsv</groupId>
             <artifactId>opencsv</artifactId>

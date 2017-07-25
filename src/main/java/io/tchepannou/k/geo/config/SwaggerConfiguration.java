@@ -1,6 +1,5 @@
 package io.tchepannou.k.geo.config;
 
-import com.google.common.collect.Sets;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +11,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -27,6 +27,7 @@ public class SwaggerConfiguration {
     private String email;
     private String licenceType;
     private String licencePath;
+    private String protocol;
 
     @Bean
     public Docket documentation() {
@@ -37,7 +38,7 @@ public class SwaggerConfiguration {
                 .paths(or(regex("/geo/v1/.*?")))
                 .build()
                 .pathMapping("/")
-                .protocols(Sets.newHashSet("http", "https"))
+                .protocols(Collections.singleton(protocol))
                 .apiInfo(apiInfo())
                 .securitySchemes(Arrays.asList(new ApiKey("api_key", "api_key", "header")))
         ;
@@ -108,5 +109,13 @@ public class SwaggerConfiguration {
 
     public void setLicencePath(final String licencePath) {
         this.licencePath = licencePath;
+    }
+
+    public String getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(final String protocol) {
+        this.protocol = protocol;
     }
 }
