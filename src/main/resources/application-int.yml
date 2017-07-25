@@ -1,8 +1,6 @@
 spring:
   datasource:
-    driverClass: com.mysql.jdbc.Driver
     url: mysql://k.cwj11t2vidmo.us-east-1.rds.amazonaws.com:3306/k_geo
     username: kadmin
     password: kadmin
-
 
