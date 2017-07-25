@@ -12,6 +12,8 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/k_geo
     username: root
     #password:
+    dbcp2:
+      max-total: 1
 
 k:
   geonames:
