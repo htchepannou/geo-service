@@ -83,7 +83,7 @@ public class CityController {
     @RequestMapping(path = "/cities/load/{countryISO}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "load", notes = "Load all the cities of a country")
     public void load(@PathVariable String countryISO) throws IOException {
-        service.loadCities(country);
+        service.loadCities(countryISO);
     }
 
     private ResponseEntity<io.tchepannou.k.geo.City> toResponseEntity (City city, Country country){
