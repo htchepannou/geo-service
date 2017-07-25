@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -27,9 +26,9 @@ import java.util.zip.ZipInputStream;
 
 @Component
 @ConfigurationProperties("k.geonames")
-public class Geonames {
+public class GeonamesService {
     //-- Attributes
-    private static final Logger LOGGER = LoggerFactory.getLogger(Geonames.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeonamesService.class);
 
     public static final String LOCK_COUNTRY = "country";
     public static final String LOCK_CITY = "city";
@@ -54,7 +53,6 @@ public class Geonames {
 
 
     //-- Public
-    @Scheduled(cron = "0 0 1 ? * *")    // Everyday at 1:00AM
     public void loadCountries() throws IOException{
         final String job = LOCK_COUNTRY;
         Lock lock = lock(job);
@@ -83,16 +81,13 @@ public class Geonames {
 
     }
 
-    @Scheduled(cron = "0 15 1 ? * *")    // Everyday at 1:15AM
     public void loadCities() throws IOException{
         for (String country : countries) {
             loadCities(country);
         }
     }
 
-
-    //-- Private
-    private int loadCities(final String country) throws IOException{
+    public int loadCities(final String country) throws IOException{
         final String job = LOCK_CITY + "-" + country;
         Lock lock = lock(job);
         if (lock == null){
@@ -137,6 +132,7 @@ public class Geonames {
         return rows;
     }
 
+    //-- Private
     private Lock lock(String name){
         String owner;
         try {

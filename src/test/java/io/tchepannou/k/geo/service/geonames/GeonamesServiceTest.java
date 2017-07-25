@@ -20,10 +20,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GeonamesTest {
+public class GeonamesServiceTest {
 
     @Autowired
-    Geonames geonames;
+    GeonamesService geonames;
 
     @Autowired
     CountryDao countryDao;
@@ -68,7 +68,7 @@ public class GeonamesTest {
     @Sql({"/sql/clean.sql"})
     public void shouldNotLoadCountriesIfLock () throws Exception {
         // Given
-        lockDao.save(new Lock(Geonames.LOCK_COUNTRY, "test"));
+        lockDao.save(new Lock(GeonamesService.LOCK_COUNTRY, "test"));
 
         // When
         geonames.loadCountries();

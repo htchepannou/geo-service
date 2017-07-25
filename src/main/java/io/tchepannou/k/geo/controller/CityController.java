@@ -7,6 +7,7 @@ import io.tchepannou.k.geo.dao.CityDao;
 import io.tchepannou.k.geo.dao.CountryDao;
 import io.tchepannou.k.geo.domain.City;
 import io.tchepannou.k.geo.domain.Country;
+import io.tchepannou.k.geo.service.geonames.GeonamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +36,9 @@ public class CityController {
 
     @Autowired
     CityDao dao;
+
+    @Autowired
+    GeonamesService service;
 
     @RequestMapping(path = "/city/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "findById", notes = "Search city by ID")
@@ -72,6 +77,13 @@ public class CityController {
                 .collect(Collectors.toList()),
             HttpStatus.OK
         );
+    }
+
+
+    @RequestMapping(path = "/cities/load/{countryISO}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "load", notes = "Load all the cities of a country")
+    public void load(@PathVariable String countryISO) throws IOException {
+        service.loadCities(country);
     }
 
     private ResponseEntity<io.tchepannou.k.geo.City> toResponseEntity (City city, Country country){
